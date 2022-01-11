@@ -3,7 +3,7 @@ import App from './App'
 // import PostsList from './PostsList'
 // import Navbar from './Navbar'
 import Home from './Home'
-// import Error404 from './Error404'
+import Error404 from './Error404'
 import Login from './Login'
 import SignUp from './SignUp'
 // import UserProfile from './UserProfile'
@@ -22,5 +22,6 @@ export {
    Home,
    Auth,
    SignUp,
-   Login
+   Login,
+   Error404
 }

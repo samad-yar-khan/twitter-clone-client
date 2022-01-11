@@ -12,9 +12,8 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import jwt_decode  from 'jwt-decode';//import everrything
 
 
-import { Home, Auth} from './index';
+import { Home, Auth ,Error404} from './index';
 import {getAuthTokenFromLocalStorage ,setAuthTokenInLocalStorage,getFormbody} from '../helpers/utils';
-import axios from 'axios';
 import API from '../helpers/api'
 
 // const Settings = () => <div>SETTINGS</div>;
@@ -143,6 +142,7 @@ class App extends React.Component {
   render() {
     // console.log('PROPS ', this.props);
     const {user,isLoggedIn,token} = this.state;
+    const AuthProps = {isLoggedIn:isLoggedIn};
 
     if(!isLoggedIn){
       return (<Auth 
@@ -152,7 +152,7 @@ class App extends React.Component {
     }
 
     return (
-      <div className="App">
+      <div className="App container">
         <Router>
           <Switch>
            <PrivateRoute 
@@ -169,7 +169,8 @@ class App extends React.Component {
               user = {user}
               path = {'/home'}
             />
-            <Route exact={true} path={'/auth'} component={Auth} />
+            <Route AuthProps={AuthProps} exact={true} path={'/auth'} render={(props)=><Auth  {...props}/>} />
+            <Route component={Error404} />
           </Switch>
         </Router>
       </div>

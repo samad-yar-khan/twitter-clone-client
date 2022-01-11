@@ -6,6 +6,7 @@ import API from '../helpers/api'
 import {getFormbody} from '../helpers/utils'
 import {Login , SignUp} from './index'
 import Modal from 'react-bootstrap/Modal'
+import { Redirect } from "react-router-dom";
 
 import axios from 'axios'
 
@@ -95,6 +96,14 @@ import axios from 'axios'
 
      render() {
         const {signUp ,successSignUp,failedSignUp,message} = this.state;
+        const {isLoggedIn} = this.props;
+        const {from} = this.props.location.state || {from : {pathname : '/'}};//if by default we dont have a state in location we and its null , then we gget ad object with a path which leads to home
+
+        if(isLoggedIn){
+          return <Redirect to={from} />
+        }
+
+       
          return (
              <div className='full-h d-flex'>
                  <div className={"d-none d-md-block overflow-hidden"}>
