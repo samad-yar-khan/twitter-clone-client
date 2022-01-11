@@ -63,7 +63,7 @@ class Login extends React.Component {
                     SignUp
                 </h1> */}
         <Form.Group className="mb-3 mt-3 "  controlId="formBasicEmail">
-          <Form.Control type="email" placeholder="Enter email" placeholder="Password" onChange={(e)=>{this.handleEmailChange(e)}}/>
+          <Form.Control type="email" placeholder="Enter email" onChange={(e)=>{this.handleEmailChange(e)}}/>
           <Form.Text className="text-muted">
             We are excited to have you back here!
           </Form.Text>

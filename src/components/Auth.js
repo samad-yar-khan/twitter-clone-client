@@ -69,18 +69,19 @@ import axios from 'axios'
                 }
               });
         //    console.log(data);
-            if(data.success){
+        // console.log(data.data.message);
+            if(data.data.success){
                 this.setState({
                     successSignUp:true,
                     failedSignUp:false,
                     SignUp:false,
-                    message:data.message
+                    message:data.data.message
                 })
             }else{
                 this.setState({
-                    successSignUp:true,
-                    failedSignUp:false,
-                    message:data.message
+                    successSignUp:false,
+                    failedSignUp:true,
+                    message:data.data.message
                 })
             }
         }catch(err){
@@ -108,6 +109,9 @@ import axios from 'axios'
                     {signUp ?
                     <SignUp
                         signUp = {this.signUp}
+                        successSignUp = {successSignUp}
+                        failedSignUp= {failedSignUp}
+                        message={message}
                     />:
                     <Login
                         logIn = {this.props.logIn}

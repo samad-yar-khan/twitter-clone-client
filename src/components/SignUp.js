@@ -61,7 +61,6 @@ import Button from 'react-bootstrap/Button'
   };
 
      render() {
-       
     
          return (
             <div className='d-flex align-items-center justify-content-around align-items-center'>
@@ -89,12 +88,19 @@ import Button from 'react-bootstrap/Button'
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicConfPassword">
           <Form.Control type="password" placeholder="Confirm Password"  onChange={(e)=>{this.handleConfirmPasswordChange(e);}} />
+          {this.props.successSignUp && (<Form.Text className="text-muted">
+                Signed Up ! for twitter
+          </Form.Text>)}
+          {this.props.failedSignUp && (<Form.Text variant="danger" className="text-muted">
+                Signup Failed {this.props.message}
+          </Form.Text>)}
         </Form.Group>
         
        
         <Button variant="primary" type="submit" className='d-flex justify-content-around' onClick={(e)=>{this.handleFormSubmit(e);}}>
           Submit
         </Button>
+    
       </Form>
         
          </div>
