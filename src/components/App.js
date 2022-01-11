@@ -13,7 +13,7 @@ import jwt_decode  from 'jwt-decode';//import everrything
 
 
 import { Home, Auth} from './index';
-import {getAuthTokenFromLocalStorage ,setAuthTokenInLocalStorage} from '../helpers/utils';
+import {getAuthTokenFromLocalStorage ,setAuthTokenInLocalStorage,getFormbody} from '../helpers/utils';
 import axios from 'axios';
 import API from '../helpers/api'
 
@@ -46,7 +46,8 @@ class App extends React.Component {
         user :{},
         token : null,
         loading : true,
-        isLoggedIn : false
+        isLoggedIn : false,
+        loginFail: false
         
     }
     
@@ -58,10 +59,12 @@ class App extends React.Component {
     try{
 
       const token = getAuthTokenFromLocalStorage();
+      // console.log(token);
 
       if(token){
   
         const user = jwt_decode(token);
+        // console.log(user);
         const config = {
           headers: { Authorization: `Bearer ${token}` }
       };
@@ -69,12 +72,13 @@ class App extends React.Component {
         key: "value"
      };
           
-      let userData = await API.get( `users/${user.id}`,
+      let userData = await API.get( `users/profile/${user._id}`,
+      config,
       bodyParameters,
-        config
       );
+      // console.log(userData);
 
-      if(userData.success){
+      if(userData.data){
         this.setState({
           user : userData.data,
           isLoggedIn : true
@@ -90,12 +94,61 @@ class App extends React.Component {
 
   }
 
+  logIn = async (email,password )=>{
+        
+    try{
+        const bodyParameters = getFormbody({
+            email :email,
+            password:password,
+         });
+        //  console.log(bodyParameters);
+         const config = {
+            headers: { Authorization: `Bearer` }
+        };
+        const data = await API.post('/users/login',
+         bodyParameters ,{
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+          });
+          // console.log(data.data.data.token ,111);
+        if(data.data.success){
+          console.log(data.data.data.token);
+          setAuthTokenInLocalStorage(data.data.data.token);
+          const user = jwt_decode(data.data.data.token);
+
+          this.setState({
+            user:user,
+            token:data.data.token,
+            isLoggedIn:true
+
+          });
+            
+        }else{
+
+          this.setState({
+            loginFail:true,
+            isLoggedIn : false
+          });
+           
+        }
+    }catch(err){
+        console.log(err);
+    }
+    
+
+}
+
+
   render() {
     // console.log('PROPS ', this.props);
     const {user,isLoggedIn,token} = this.state;
 
     if(!isLoggedIn){
-      return (<Auth/>)
+      return (<Auth 
+        logIn = {this.logIn}
+        loginFail = {this.state.loginFail}
+      />)
     }
 
     return (

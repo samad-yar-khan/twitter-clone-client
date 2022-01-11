@@ -56,8 +56,8 @@ import Button from 'react-bootstrap/Button'
   handleFormSubmit = (e) => {
     e.preventDefault();
     const { name_, email, password, confirmPassword ,user_name} = this.state;
+    this.props.signUp(name_,user_name , password , confirmPassword ,email );
 
-    
   };
 
      render() {
