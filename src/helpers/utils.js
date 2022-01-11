@@ -16,10 +16,10 @@ export function getFormbody (params){
 
 
 export function getAuthTokenFromLocalStorage(){
-    return localStorage.getItem('token');
+    return localStorage.getItem('twitter-clone-mb-token-123');
 }
 
 export function setAuthTokenInLocalStorage(token){
-    localStorage.setItem('token' , token);
+    localStorage.setItem('twitter-clone-mb-token-123' , token);
     return ;
 }
