@@ -53,41 +53,40 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    //we check if a jwt ltoken exists in local
-    //if it exists we login the user
-    // try{
+    // we check if a jwt ltoken exists in local
+    // if it exists we login the user
+    try{
 
-    //   const token = getAuthTokenFromLocalStorage();
+      const token = getAuthTokenFromLocalStorage();
 
-    //   if(token){
+      if(token){
   
-    //     const user = jwt_decode(token);
-    //     const config = {
-    //       headers: { Authorization: `Bearer ${token}` }
-    //   };
-    //   const bodyParameters = {
-    //     key: "value"
-    //  };
+        const user = jwt_decode(token);
+        const config = {
+          headers: { Authorization: `Bearer ${token}` }
+      };
+      const bodyParameters = {
+        key: "value"
+     };
           
-    //   let userData = await API.get( `users/${user.id}`,
-    //   bodyParameters,
-    //     config
-    //   );
+      let userData = await API.get( `users/${user.id}`,
+      bodyParameters,
+        config
+      );
 
-    //   if(userData.success){
-    //     this.setState({
-    //       user : userData.data,
-    //       isLoggedIn : true
-    //     })
-    //   }
+      if(userData.success){
+        this.setState({
+          user : userData.data,
+          isLoggedIn : true
+        })
+      }
   
-    //   }
+      }
 
-    // }catch(err){
-    //   console.log(err);
-    // }
+    }catch(err){
+      console.log(err);
+    }
 
-    //now if we found user using a jwt token we will dipatch a diferet actio
 
   }
 
