@@ -24,3 +24,9 @@ export function setAuthTokenInLocalStorage(token){
     localStorage.setItem('twitter-clone-mb-token-123' , token);
     return ;
 }
+
+export  function removeTokenFromLocalStorage(){
+    localStorage.removeItem("twitter-clone-mb-token-123")
+}
+
+

@@ -14,7 +14,7 @@ import jwt_decode  from 'jwt-decode';//import everrything
 
 
 import { Home, Auth ,Error404} from './index';
-import {getAuthTokenFromLocalStorage ,setAuthTokenInLocalStorage,getFormbody} from '../helpers/utils';
+import {getAuthTokenFromLocalStorage ,setAuthTokenInLocalStorage,getFormbody,removeTokenFromLocalStorage} from '../helpers/utils';
 import API from '../helpers/api'
 
 // const Settings = () => <div>SETTINGS</div>;
@@ -139,6 +139,15 @@ class App extends React.Component {
 
 }
 
+  logOut =()=>{
+    removeTokenFromLocalStorage();
+    console.log("LO");
+    this.setState({
+      token:null,
+      user:null,
+      isLoggedIn:false
+    })
+  }
 
   render() {
     // console.log('PROPS ', this.props);
@@ -154,7 +163,14 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Router>
+        <Home 
+              
+              token = {token}
+              isLoggedIn = {isLoggedIn}
+              user = {user}
+              logOut = {this.logOut}
+            />
+        {/* <Router>
           <Switch>
            <PrivateRoute 
               component = {Home}
@@ -162,6 +178,7 @@ class App extends React.Component {
               isLoggedIn = {isLoggedIn}
               user = {user}
               path = {'/'}
+              logOut = {this.logOut}
             />
             <PrivateRoute 
               component = {Home}
@@ -169,11 +186,12 @@ class App extends React.Component {
               isLoggedIn = {isLoggedIn}
               user = {user}
               path = {'/home'}
+              logOut = {this.logOut}
             />
             <Route AuthProps={AuthProps} exact={true} path={'/auth'} render={(props)=><Auth  {...props}/>} />
             <Route component={Error404} />
           </Switch>
-        </Router>
+        </Router> */}
       </div>
     );
   }

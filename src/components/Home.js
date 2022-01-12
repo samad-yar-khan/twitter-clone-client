@@ -9,17 +9,16 @@ import {TimeLine ,SideNav,Suggestions} from './index'
  
  class Home extends React.Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
     }
 
      render() {
-        const {posts , friends , isLoggedIn} =  this.props;
-    
-
+        const {logOut} =  this.props;
+   
          return (
              <div className='App'>
-                  <SideNav />
+                  <SideNav  logOut={logOut}/>
                     <TimeLine />
                     <Suggestions />
              </div>
