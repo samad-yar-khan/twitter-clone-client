@@ -6,6 +6,11 @@ import Home from './Home'
 import Error404 from './Error404'
 import Login from './Login'
 import SignUp from './SignUp'
+import TweetInput from './TweetInput'
+import TimeLine from './TimeLine'
+import SideNav from './SideNav'
+import Suggestions from './Suggestions'
+import NavOptions from './NavOptions'
 // import UserProfile from './UserProfile'
 // import Loader from './Loader'
 // import FollowList from './FollowList'
@@ -23,5 +28,10 @@ export {
    Auth,
    SignUp,
    Login,
+   TweetInput,
+   TimeLine,
+   SideNav,
+   Suggestions,
+   NavOptions,
    Error404
 }

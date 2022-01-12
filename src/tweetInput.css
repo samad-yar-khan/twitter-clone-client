@@ -14,11 +14,13 @@
     display: flex;
   }
   
-  .tweetFormInput > input {
+  .tweetFormInput > textarea {
     flex: 1;
     margin-left: 20px;
     font-size: 20px;
     border: none;
+    overflow-wrap: break-word;
+    resize: vertical;
   }
   
   .tweetBox__imageInput {

@@ -1,7 +1,7 @@
 import React from "react";
 import "../sideNav.css";
 import TwitterIcon from "@material-ui/icons/Twitter";
-import SidebarOption from "./SidebarOption";
+
 import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
@@ -12,19 +12,20 @@ import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import { Button } from "@material-ui/core";
 
+import {NavOptions} from './index'
+
 function SideNav() {
   return (
     <div className="sideNav">
       <TwitterIcon className="sideNavIcons" />
-
-      <SidebarOption active Icon={HomeIcon} text="Home" />
-      <SidebarOption Icon={SearchIcon} text="Explore" />
-      <SidebarOption Icon={NotificationsNoneIcon} text="Notifications" />
-      <SidebarOption Icon={MailOutlineIcon} text="Messages" />
-      <SidebarOption Icon={BookmarkBorderIcon} text="Bookmarks" />
-      <SidebarOption Icon={ListAltIcon} text="Lists" />
-      <SidebarOption Icon={PermIdentityIcon} text="Profile" />
-      <SidebarOption Icon={MoreHorizIcon} text="More" />
+      <NavOptions active={true} Icon={HomeIcon} text="Home" />
+      <NavOptions active={false} Icon={SearchIcon} text="Explore" />
+      <NavOptions  active={false} Icon={NotificationsNoneIcon} text="Notifications" />
+      <NavOptions   active={false} Icon={MailOutlineIcon} text="Messages" />
+      <NavOptions   active={false} Icon={BookmarkBorderIcon} text="Bookmarks" />
+      <NavOptions  active={false} Icon={ListAltIcon} text="Lists" />
+      <NavOptions  active={false} Icon={PermIdentityIcon} text="Profile" />
+      <NavOptions   active={false} Icon={MoreHorizIcon} text="More" />
 
       {/* Button -> Tweet */}
       <Button variant="outlined" className="sideNavTweet" fullWidth>

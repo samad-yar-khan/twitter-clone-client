@@ -1,8 +1,8 @@
 import React from "react";
-import "./Widgets.css";
+import "../suggestions.css";
 import SearchIcon from "@material-ui/icons/Search";
 
-class Suggestions{
+class Suggestions extends React.Component{
 
     render(){
         return (

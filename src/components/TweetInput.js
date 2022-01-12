@@ -3,12 +3,12 @@ import "../tweetInput.css";
 import { Avatar, Button } from "@material-ui/core";
 import API from '../helpers/api'
 
-class TweetInput{
+class TweetInput extends React.Component{
 
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state={
-            tweetText = ""
+            tweetText : ""
         }
     }
 
@@ -33,15 +33,15 @@ class TweetInput{
             <div className="tweetInput">
               <form>
                 <div className="tweetFormInput">
-                  <Avatar src="https://kajabi-storefronts-production.global.ssl.fastly.net/kajabi-storefronts-production/themes/284832/settings_images/rLlCifhXRJiT0RoN2FjK_Logo_roundbackground_black.png" />
-                  <input
-                    onChange={(e) => setTweetMessage(e.target.value)}
+                  <Avatar src="https://www.thestreet.com/.image/t_share/MTgyMDU5NDcwMTc4NzU1NzE1/boredape1.jpg" />
+                  <textarea
+                    onChange={(e) => this.setTweetMessage(e)}
                     placeholder="What's happening?"
                     type="text"
                   />
                 </div>
                 <Button
-                  onClick={(e)=>{this.postTweet}}
+                  onClick={this.postTweet}
                   type="submit"
                   className="tweetInputButton"
                 >

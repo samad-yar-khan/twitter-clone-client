@@ -1,0 +1,41 @@
+.navOption {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .navOption:hover {
+    background-color: #e8f5fe;
+    border-radius: 30px;
+    color: var(--twitter-color);
+    transition: color 100ms ease-out;
+    
+  }
+  
+
+  .navOption > .MuiSvgIcon-root {
+    /* padding: 20px; */
+    
+    font-size: 30px ;
+    margin-left: 20px; 
+    margin-bottom: 20px; 
+    margin: 10px;
+  }
+  
+  .navOption > h2 {
+    font-weight: 800;
+    font-size: 20px;
+    margin-right: 20px;
+    
+  }
+  
+  .NavOption--active {
+    color: var(--twitter-color);
+  }
+
+  .sideNavIcons {
+    color: var(--twitter-color);
+    font-size: 30px !important;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }

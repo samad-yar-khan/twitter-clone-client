@@ -154,9 +154,6 @@ class App extends React.Component {
 
     return (
       <div className="App">
-      <Sidebar />
-      <Feed />
-      <Widgets />
         <Router>
           <Switch>
            <PrivateRoute 
