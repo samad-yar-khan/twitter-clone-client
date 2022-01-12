@@ -1,5 +1,6 @@
 
 import React from 'react';
+import '../App.css'
 
 
 // import Container from 'react-bootstrap/Container';
@@ -152,7 +153,10 @@ class App extends React.Component {
     }
 
     return (
-      <div className="App container">
+      <div className="App">
+      <Sidebar />
+      <Feed />
+      <Widgets />
         <Router>
           <Switch>
            <PrivateRoute 

@@ -97,7 +97,7 @@ import axios from 'axios'
      render() {
         const {signUp ,successSignUp,failedSignUp,message} = this.state;
         const {isLoggedIn} = this.props;
-        const {from} = this.props.location.state || {from : {pathname : '/'}};//if by default we dont have a state in location we and its null , then we gget ad object with a path which leads to home
+        const {from} = {from : {pathname : '/'}};//if by default we dont have a state in location we and its null , then we gget ad object with a path which leads to home
 
         if(isLoggedIn){
           return <Redirect to={from} />
