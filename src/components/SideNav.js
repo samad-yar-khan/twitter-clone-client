@@ -23,10 +23,10 @@ function SideNav({logOut}) {
       <TwitterIcon className="sideNavIcons" />
       <NavOptions active={true} Icon={HomeIcon} text="Home" />
       <NavOptions active={false} Icon={SearchIcon} text="Explore" />
-      <NavOptions  active={false} Icon={NotificationsNoneIcon} text="Notifications" />
+      {/* <NavOptions  active={false} Icon={NotificationsNoneIcon} text="Notifications" />
       <NavOptions   active={false} Icon={MailOutlineIcon} text="Messages" />
       <NavOptions   active={false} Icon={BookmarkBorderIcon} text="Bookmarks" />
-      <NavOptions  active={false} Icon={ListAltIcon} text="Lists" />
+      <NavOptions  active={false} Icon={ListAltIcon} text="Lists" /> */}
       <NavOptions  active={false} Icon={PermIdentityIcon} text="Profile" />
       <NavOptions   active={false} Icon={MoreHorizIcon} text="More" />
       

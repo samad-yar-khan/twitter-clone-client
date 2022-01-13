@@ -20,6 +20,7 @@ import NavOptions from './NavOptions'
 // import Post from './Post'
 import Auth from './Auth'
 import Tweet from './Tweets'
+import UserItem from './UserListItem'
 
 
 export {
@@ -34,5 +35,6 @@ export {
    Suggestions,
    NavOptions,
    Error404,
-   Tweet
+   Tweet,
+   UserItem
 }

@@ -106,7 +106,7 @@ class TimeLine extends React.Component{
               <Tweet
                 key={tweet._id}
 
-                displayName={tweet.user.name}
+                displayName={tweet.user.name_}
                 username={tweet.user.user_name}
                 verified={true}
                 text={tweet.content}
