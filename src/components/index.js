@@ -21,7 +21,7 @@ import NavOptions from './NavOptions'
 import Auth from './Auth'
 import Tweet from './Tweets'
 import UserItem from './UserListItem'
-
+import Profile from './Profile'
 
 export {
    App,
@@ -36,5 +36,6 @@ export {
    NavOptions,
    Error404,
    Tweet,
-   UserItem
+   UserItem,
+   Profile
 }

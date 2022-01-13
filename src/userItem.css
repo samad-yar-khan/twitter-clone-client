@@ -3,10 +3,11 @@
     align-items: flex-start;
     border-bottom: 1px solid var(--twitter-background);
     padding-bottom: 10px;
+    cursor: pointer;
   }
   
   .user_body {
-      cursor: pointer;
+      
     flex: 1;
     padding: 10px;
   }

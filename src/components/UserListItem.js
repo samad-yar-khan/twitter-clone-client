@@ -2,11 +2,7 @@ import React, { forwardRef } from "react";
 import "../userItem.css";
 import { Avatar } from "@material-ui/core";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
-import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
-import RepeatIcon from "@material-ui/icons/Repeat";
-import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import PublishIcon from "@material-ui/icons/Publish";
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
+
 
 const UserItem = forwardRef(
   ({ displayName, username, verified, id , avatar ,showProfile}, ref) => {
@@ -38,10 +34,7 @@ const UserItem = forwardRef(
             </div> */}
           </div>
           {/* <img src={image} alt="" /> */}
-          <div className="user_footer">
-            <PersonAddIcon fontSize="small" />
-            
-          </div>
+        
         </div>
       </div>
     );
