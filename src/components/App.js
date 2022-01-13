@@ -59,6 +59,7 @@ class App extends React.Component {
     try{
 
       const token = getAuthTokenFromLocalStorage();
+     
       // console.log(token);
 
       if(token){
@@ -80,6 +81,7 @@ class App extends React.Component {
 
       if(user){
         this.setState({
+          token:token,
           user : user,
           isLoggedIn : true
         })
@@ -169,6 +171,7 @@ class App extends React.Component {
               isLoggedIn = {isLoggedIn}
               user = {user}
               logOut = {this.logOut}
+
             />
         {/* <Router>
           <Switch>

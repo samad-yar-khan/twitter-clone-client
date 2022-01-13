@@ -12,7 +12,7 @@ const Tweet = forwardRef(
     return (
       <div className="post" ref={ref}>
         <div className="post__avatar">
-          <Avatar src={"https://www.thestreet.com/.image/t_share/MTgyMDU5NDcwMTc4NzU1NzE1/boredape1.jpg"} />
+          <Avatar src={avatar} />
         </div>
         <div className="post__body">
           <div className="post__header">

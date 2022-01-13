@@ -15,13 +15,14 @@ import "../Home.css"
     }
 
      render() {
-        const {logOut} =  this.props;
+        const {logOut , token,user} =  this.props;
+       
    
          return (
              <div className='Home'>
                   <SideNav  logOut={logOut}/>
-                    <TimeLine />
-                    <Suggestions />
+                    <TimeLine token ={token} />
+                    <Suggestions token={token} user={user}/>
              </div>
          );
      }
