@@ -115,13 +115,13 @@ class App extends React.Component {
           });
           // console.log(data.data.data.token ,111);
         if(data.data.success){
-          console.log(data.data.data.token);
+          // console.log(data.data.data.token);
           setAuthTokenInLocalStorage(data.data.data.token);
           const user = jwt_decode(data.data.data.token);
 
           this.setState({
             user:user,
-            token:data.data.token,
+            token:data.data.data.token,
             isLoggedIn:true
 
           });

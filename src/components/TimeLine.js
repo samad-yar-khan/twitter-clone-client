@@ -1,7 +1,7 @@
 import React from "react";
 import "../timeLine.css";
 import FlipMove from "react-flip-move";
-import {TweetInput , Tweet} from "./index";
+import {TweetInput , Loader , Tweet} from "./index";
 import API from '../helpers/api'
 
 
@@ -11,6 +11,7 @@ class TimeLine extends React.Component{
     constructor(props){
         super(props);
         this.state={
+          loading:true,
           tweetsList:[],
           success:false,
           avatarList: ["https://i.guim.co.uk/img/media/ef8492feb3715ed4de705727d9f513c168a8b196/37_0_1125_675/master/1125.jpg?width=465&quality=45&auto=format&fit=max&dpr=2&s=7ce91813e22e1ca59b2723833dffa49f",
@@ -52,11 +53,13 @@ class TimeLine extends React.Component{
        if(data.data.success){
          this.setState({
            tweetsList:data.data.tweets,
-           success:true
+           success:true,
+           loading:false
          })
        }else{
          this.setState({
-           success:false
+           success:false,
+           loading:false
          })
        }
       }catch(err){
@@ -81,8 +84,14 @@ class TimeLine extends React.Component{
   
   render(){
 
-    const {tweetsList , success, avatarList} = this.state;
+    const {tweetsList , success, avatarList,loading} = this.state;
     const token = this.props.token;
+
+    if(loading){
+      
+      return(<div className="feed"><Loader/></div>);
+    }
+
     return (
         <div className="feed">
           <div className="feed__header">
@@ -100,6 +109,8 @@ class TimeLine extends React.Component{
                 text={"Looks Like we cant fetch your tweets !"}
                 // avatar={post.avatar}
               /> }
+
+             
 
           {success && ( <FlipMove>
             {tweetsList.map((tweet , ind) => (

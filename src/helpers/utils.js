@@ -20,7 +20,7 @@ export function getAuthTokenFromLocalStorage(){
 }
 
 export function setAuthTokenInLocalStorage(token){
-    console.log(token);
+    // console.log(token);
     localStorage.setItem('twitter-clone-mb-token-123' , token);
     return ;
 }

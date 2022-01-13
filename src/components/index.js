@@ -22,6 +22,7 @@ import Auth from './Auth'
 import Tweet from './Tweets'
 import UserItem from './UserListItem'
 import Profile from './Profile'
+import Loader from './Loader'
 
 export {
    App,
@@ -37,5 +38,6 @@ export {
    Error404,
    Tweet,
    UserItem,
-   Profile
+   Profile,
+   Loader
 }

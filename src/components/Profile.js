@@ -1,8 +1,8 @@
 import React from "react";
 import "../profile.css";
 import FlipMove from "react-flip-move";
-import {Tweet} from "./index";
-import { Avatar, Button } from "@material-ui/core";
+import {Tweet ,Loader } from "./index";
+import { Avatar, Button} from "@material-ui/core";
 import API from '../helpers/api'
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
@@ -13,6 +13,7 @@ class Profile extends React.Component{
     constructor(props){
         super(props);
         this.state={
+          loading:true,
             myFollowing :{},
           tweetsList:[],
           followers : [],
@@ -84,7 +85,8 @@ class Profile extends React.Component{
            success:true,
            ownProfile:ownProfile,
            follow : follow,
-           myFollowing : myFollowing
+           myFollowing : myFollowing,
+           loading:false
          })
        }else{
          this.setState({
@@ -160,7 +162,8 @@ class Profile extends React.Component{
                following : following,
                success:true,
                ownProfile:ownProfile,
-               follow: follow
+               follow: follow,
+               loading:false
              })
            }else{
              this.setState({
@@ -261,8 +264,13 @@ class Profile extends React.Component{
   
   render(){
 
-    const {tweetsList , success, avatarList ,followers,following ,userProfile,follow,ownProfile} = this.state;
+    const {tweetsList , success, avatarList ,followers,following ,userProfile,follow,ownProfile,loading} = this.state;
     // const token = this.props.token;
+    if(loading){
+      
+      return(<div className="feed"><Loader/></div>);
+    }
+    
     return (
         <div className="feed">
           <div className="feed__header">
