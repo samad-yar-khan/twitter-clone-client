@@ -1,14 +1,14 @@
 import React from 'react';
 import Image from '../assets/images/twit_img.png';
-import { Container  , Row , Col ,ButtonGroup ,Button } from 'react-bootstrap';
+import {ButtonGroup ,Button } from 'react-bootstrap';
 // import {PostsList , FriendList , Chat} from './index'
 import API from '../helpers/api'
 import {getFormbody} from '../helpers/utils'
 import {Login , SignUp} from './index'
-import Modal from 'react-bootstrap/Modal'
+
 import { Redirect } from "react-router-dom";
 
-import axios from 'axios'
+
 
 
 
@@ -60,9 +60,7 @@ import axios from 'axios'
                 confirmPassword:confirmPassword
              });
             //  console.log(bodyParameters);
-             const config = {
-                headers: { Authorization: `Bearer` }
-            };
+
             const data = await API.post('/users/signup',
              bodyParameters ,{
                 headers: {
@@ -107,7 +105,7 @@ import axios from 'axios'
          return (
              <div className='full-h d-flex'>
                  <div className={"d-none d-md-block overflow-hidden"}>
-                      <img src ={Image} />
+                      <img src ={Image} alt='img' />
                  </div>
                  <div className={"full-h d-flex flex-column justify-content-center align-items-center"}>
                  <div className="col-auto ">
