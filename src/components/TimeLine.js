@@ -34,7 +34,7 @@ class TimeLine extends React.Component{
 
       try{
         let token = this.props.token;
-        console.log( `Bearer ${token}` );;
+   
 
         //  console.log(123,token);
           const config = {

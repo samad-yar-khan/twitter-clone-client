@@ -34,8 +34,7 @@ class Suggestions extends React.Component{
 
     try{
       let token = this.props.token;
-      console.log( `Bearer ${token}` );;
-
+  
       //  console.log(123,token);
         const config = {
           headers: { Authorization: `Bearer ${token}` }
@@ -75,7 +74,7 @@ class Suggestions extends React.Component{
     render(){
 
       const {userList , avatarList ,success} = this.state;
-
+      const {user , showProfile} = this.props;
         return (
             <div className="suggestions">
               <div className="suggestionsInput">
@@ -92,11 +91,11 @@ class Suggestions extends React.Component{
               {success && (userList.map((user , ind) => (
               <UserItem
                 key={user._id}
-
+                id = {user._id}
                 displayName={user.name_}
                 username={user.user_name}
                 verified={true}
-  
+                showProfile={showProfile}
                 avatar={avatarList[ind%(avatarList.length)]}
               
               />

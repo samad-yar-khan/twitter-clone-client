@@ -22,7 +22,7 @@ import "../Home.css"
     }
 
     showHome = ()=>{
-        
+    //    console.log("hey;")
         this.setState({
             showProfile:false
         })
@@ -30,7 +30,7 @@ import "../Home.css"
     }
 
     showProfile = (user_id)=>{
-        
+        console.log(user_id)
         this.setState({
             showProfile:true
         })
@@ -44,10 +44,15 @@ import "../Home.css"
    
          return (
              <div className='Home'>
-                  <SideNav  logOut={logOut} showProfile={this.showProfile} showHome ={this.showHome}/>
+                <SideNav  
+                    logOut={logOut} 
+                    showProfile={this.showProfile}
+                    showHome ={this.showHome} 
+                    user ={user}
+                />
                   {!showProfile && (<TimeLine token ={token} />)}
                     
-                    <Suggestions token={token} user={user}/>
+                    <Suggestions token={token} user={user} showProfile={this.showProfile}/>
              </div>
          );
      }

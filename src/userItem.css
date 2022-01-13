@@ -6,6 +6,7 @@
   }
   
   .user_body {
+      cursor: pointer;
     flex: 1;
     padding: 10px;
   }

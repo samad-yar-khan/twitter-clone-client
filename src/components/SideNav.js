@@ -14,21 +14,21 @@ import { Button } from "@material-ui/core";
 
 import {NavOptions} from './index'
 
-function SideNav({logOut}) {
+function SideNav({logOut ,showProfile ,showHome ,user}) {
 
   
 
   return (
     <div className="sideNav">
       <TwitterIcon className="sideNavIcons" />
-      <NavOptions active={true} Icon={HomeIcon} text="Home" />
-      <NavOptions active={false} Icon={SearchIcon} text="Explore" />
+      <NavOptions active={true} Icon={HomeIcon} text="Home" clickEvent={showHome} />
+      <NavOptions active={false} Icon={SearchIcon} text="Explore" clickEvent={showHome} />
       {/* <NavOptions  active={false} Icon={NotificationsNoneIcon} text="Notifications" />
       <NavOptions   active={false} Icon={MailOutlineIcon} text="Messages" />
       <NavOptions   active={false} Icon={BookmarkBorderIcon} text="Bookmarks" />
       <NavOptions  active={false} Icon={ListAltIcon} text="Lists" /> */}
-      <NavOptions  active={false} Icon={PermIdentityIcon} text="Profile" />
-      <NavOptions   active={false} Icon={MoreHorizIcon} text="More" />
+      <NavOptions  active={false} Icon={PermIdentityIcon} text="Profile" clickEvent={showProfile}/>
+      <NavOptions   active={false} Icon={MoreHorizIcon} text="More" clickEvent={showHome} />
       
 
       {/* Button -> Tweet */}

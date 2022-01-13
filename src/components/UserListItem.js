@@ -9,9 +9,9 @@ import PublishIcon from "@material-ui/icons/Publish";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 
 const UserItem = forwardRef(
-  ({ displayName, username, verified, id , avatar }, ref) => {
+  ({ displayName, username, verified, id , avatar ,showProfile}, ref) => {
     return (
-      <div className="user" ref={ref}>
+      <div className="user" ref={ref} onClick={()=>{showProfile(id)}}>
         <div className="user_avatar">
           <Avatar src={avatar} />
         </div>
