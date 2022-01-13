@@ -9,32 +9,32 @@ import '../App.css'
 // import { LinkContainer } from 'react-router-bootstrap';
 
 // import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+// import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import jwt_decode  from 'jwt-decode';//import everrything
 
 
-import { Home, Auth ,Error404} from './index';
+import { Home, Auth } from './index';
 import {getAuthTokenFromLocalStorage ,setAuthTokenInLocalStorage,getFormbody,removeTokenFromLocalStorage} from '../helpers/utils';
 import API from '../helpers/api'
 
 // const Settings = () => <div>SETTINGS</div>;
 
-const PrivateRoute = (privateRouteProps) => {
+// const PrivateRoute = (privateRouteProps) => {
   
-  const {component : Component , path , isLoggedIn } = privateRouteProps;
+//   const {component : Component , path , isLoggedIn } = privateRouteProps;
 
-  return <Route  
-            path={path}
-            render = {(props)=>{
-              return isLoggedIn ? <Component {...props}/> : <Redirect to={{
-                pathname:'/auth',
-                state : {
-                  from : props.location /* This is put here to logim can redirect too the old location once user is logged in */
-                }
-              }}/>;
-            }}
-        />
-}
+//   return <Route  
+//             path={path}
+//             render = {(props)=>{
+//               return isLoggedIn ? <Component {...props}/> : <Redirect to={{
+//                 pathname:'/auth',
+//                 state : {
+//                   from : props.location /* This is put here to logim can redirect too the old location once user is logged in */
+//                 }
+//               }}/>;
+//             }}
+//         />
+// }
 
 class App extends React.Component {
 
@@ -104,9 +104,9 @@ class App extends React.Component {
             password:password,
          });
         //  console.log(bodyParameters);
-         const config = {
-            headers: { Authorization: `Bearer` }
-        };
+        //  const config = {
+        //     headers: { Authorization: `Bearer` }
+        // };
         const data = await API.post('/users/login',
          bodyParameters ,{
             headers: {
@@ -154,8 +154,7 @@ class App extends React.Component {
   render() {
     // console.log('PROPS ', this.props);
     const {user,isLoggedIn,token} = this.state;
-    const AuthProps = {isLoggedIn:isLoggedIn};
-
+  
     if(!isLoggedIn){
       return (<Auth 
         logIn = {this.logIn}

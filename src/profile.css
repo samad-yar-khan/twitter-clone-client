@@ -108,6 +108,11 @@
     margin-left:10px;
   }
   
+  .followTable{
+    display: flex;
+    align-items: space-between;
+    justify-content: space-around;
+  }
   
   .user_headerSpecial_profile {
   
@@ -116,4 +121,32 @@
     font-size: 20px;
     color: rgb(145, 137, 137);
   }
+
+  .follow_tab_name {
+  
+    font-weight: 600;
+    padding-left: 15px;
+    font-size: 15px;
+    color: rgb(18, 73, 160);
+  }
+  .follow_tab {
+  
+    font-weight: 600;
+    padding-left: 15;
+    font-size: 15px;
+    color: rgb(145, 137, 137);
+  }
+  
+  .follow_tab_text {
+    display: flex;
+    align-items: center;
+    font-weight: 600; 
+    justify-content: center;
+    padding-left: 15px;
+    font-size: 20px;
+    color: rgb(145, 137, 137);
+  }
+  
+
+
   

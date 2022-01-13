@@ -74,7 +74,7 @@ class Suggestions extends React.Component{
     render(){
 
       const {userList , avatarList ,success} = this.state;
-      const {user , showProfile} = this.props;
+      const { showProfile} = this.props;
         return (
             <div className="suggestions">
               <div className="suggestionsInput">

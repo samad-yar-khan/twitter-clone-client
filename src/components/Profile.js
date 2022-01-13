@@ -145,7 +145,7 @@ class Profile extends React.Component{
     
             //    console.log(data.data.data);
                 let ownProfile = false;
-            if(data.data.data.profile_user._id == this.props.user._id){
+            if(data.data.data.profile_user._id === this.props.user._id){
                 ownProfile=true;
             }
             let tweetsList=data.data.data.user_tweets;
@@ -194,7 +194,7 @@ class Profile extends React.Component{
         );
         // console.log(data.data.tweets);
        if(data.data.success){
-            let follow = true;
+            
             let {myFollowing} = this.state;
         myFollowing[fetchUserId]=true;
          this.setState({
@@ -238,7 +238,7 @@ class Profile extends React.Component{
         );
         // console.log(data.data.tweets);
        if(data.data.success){
-            let follow = true;
+
             let {myFollowing} = this.state;
             myFollowing[fetchUserId]=false;
 
@@ -262,7 +262,7 @@ class Profile extends React.Component{
   render(){
 
     const {tweetsList , success, avatarList ,followers,following ,userProfile,follow,ownProfile} = this.state;
-    const token = this.props.token;
+    // const token = this.props.token;
     return (
         <div className="feed">
           <div className="feed__header">
@@ -311,6 +311,49 @@ class Profile extends React.Component{
                 </Button>)
             }
                 </div>
+               <div className="followTable">
+                   <div className="follow_tab leftFollow">
+        
+                    <h2>
+                    <span className="follow_tab_name">
+                       Following
+                    </span>
+                    </h2>
+                    <h2>
+                    <span className="follow_tab_text">
+                    {"  "}{following.length}
+                    </span>
+                    </h2>
+                </div>
+                <div className="follow_tab">
+        
+                    <h2>
+                    <span className="follow_tab_name">
+                       Followers
+                    </span>
+                    </h2>
+                    <h2>
+                    <span className="follow_tab_text">
+                    {"  "}{followers.length}
+                    </span>
+                    </h2>
+                </div>
+                <div className="follow_tab">
+        
+                    <h2>
+                    <span className="follow_tab_name">
+                       Tweets
+                    </span>
+                    </h2>
+                    <h2>
+                    <span className="follow_tab_text">
+                    {"  "}{tweetsList.length}
+                    </span>
+                    </h2>
+                </div>
+                </div>
+                
+                
               
               
               </div>

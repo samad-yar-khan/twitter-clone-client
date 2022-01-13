@@ -41,7 +41,7 @@ import "../Home.css"
 
      render() {
         const {logOut , token,user } =  this.props;
-        const {fetchUserId , showProfile , userProfileId } = this.state;
+        const {fetchUserId , showProfile  } = this.state;
        
    
          return (
