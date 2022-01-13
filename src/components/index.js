@@ -19,7 +19,7 @@ import NavOptions from './NavOptions'
 // import CreatePost from './CreatePost'
 // import Post from './Post'
 import Auth from './Auth'
-
+import Tweet from './Tweets'
 
 
 export {
@@ -33,5 +33,6 @@ export {
    SideNav,
    Suggestions,
    NavOptions,
-   Error404
+   Error404,
+   Tweet
 }

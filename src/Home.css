@@ -1,0 +1,12 @@
+
+.Home {
+    display: flex;
+    height: 100vh;
+    max-width: 1700px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 10px;
+    justify-content: center;
+  }
+  
+  

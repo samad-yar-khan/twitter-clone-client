@@ -65,22 +65,22 @@ class App extends React.Component {
   
         const user = jwt_decode(token);
         // console.log(user);
-        const config = {
-          headers: { Authorization: `Bearer ${token}` }
-      };
-      const bodyParameters = {
-        key: "value"
-     };
+    //     const config = {
+    //       headers: { Authorization: `Bearer ${token}` }
+    //   };
+    //   const bodyParameters = {
+    //     key: "value"
+    //  };
           
-      let userData = await API.get( `users/profile/${user._id}`,
-      config,
-      bodyParameters,
-      );
+    //   let userData = await API.get( `users/profile/${user._id}`,
+    //   config,
+    //   bodyParameters,
+      // );
       // console.log(userData);
 
-      if(userData.data){
+      if(user){
         this.setState({
-          user : userData.data,
+          user : user,
           isLoggedIn : true
         })
       }

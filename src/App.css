@@ -1,11 +1,8 @@
 
 .App {
-  display: flex;
-  height: 100vh;
-  max-width: 1700px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 10px;
+ height: 100vh;
+ display: flex;
+ max-width: 1500px;
 }
 
 

@@ -9,6 +9,10 @@ class TimeLine extends React.Component{
     
     constructor(){
         super();
+        this.state={
+          tweetsList:[]
+        }
+
     }
 
 
@@ -34,6 +38,15 @@ render(){
                 image={post.image}
               />
             ))} */}
+
+              <Tweet
+                key={"abc"}
+                displayName={"abc"}
+                username={"abc"}
+                verified={true}
+                text={"abc"}
+                // avatar={post.avatar}
+              />
           </FlipMove>
         </div>
       );
