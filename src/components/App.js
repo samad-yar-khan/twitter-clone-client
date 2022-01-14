@@ -143,7 +143,6 @@ class App extends React.Component {
 
   logOut =()=>{
     removeTokenFromLocalStorage();
-    console.log("LO");
     this.setState({
       token:null,
       user:null,

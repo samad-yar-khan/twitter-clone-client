@@ -1,8 +1,10 @@
 import React from "react";
 import "../suggestions.css";
 import SearchIcon from "@material-ui/icons/Search";
+import {getFormbody} from '../helpers/utils'
 import API from '../helpers/api'
 import {UserItem}  from './index'
+import {DebounceInput} from 'react-debounce-input';
 
 
 class Suggestions extends React.Component{
@@ -10,6 +12,7 @@ class Suggestions extends React.Component{
   constructor(props){
     super(props);
     this.state ={
+      searchText : "",
       userList : [],
       avatarList: ["https://i.guim.co.uk/img/media/ef8492feb3715ed4de705727d9f513c168a8b196/37_0_1125_675/master/1125.jpg?width=465&quality=45&auto=format&fit=max&dpr=2&s=7ce91813e22e1ca59b2723833dffa49f",
       "https://assets.thevalue.com/ad81a47725585b993585b3a821d0ec02c7435662/mobile/31dd3295b8e3e1a81221ebe94f68fa96314512c8.jpg?1630572123",
@@ -25,7 +28,10 @@ class Suggestions extends React.Component{
       "https://www.cryptotimes.io/wp-content/uploads/2021/09/Bored-Ape-2087-Website.jpg"
     ]
       ,
-      success:false
+      success:false,
+      showResults : false,
+      noSeachResults:true,
+      searchedUserList:[]
     }
     
   }
@@ -71,16 +77,128 @@ class Suggestions extends React.Component{
 
   }
 
+  searchUser = async(e)=>{
+
+  
+    try{
+
+      let searchText = e.target.value;
+
+      if(searchText.length < 2){
+        this.setState({
+          showResults:false,
+          searchedUserList:[]
+        });
+        return;
+      }else{
+
+        let token = this.props.token;
+  
+        //  console.log(123,token);
+       
+       
+            
+       const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+         }
+       };
+        const bodyParameters = getFormbody( {
+          search_text :  searchText
+      })
+            
+        let data = await API.post( `users/find`,
+        bodyParameters,
+        config
+        );
+        // console.log(data.data.tweets);
+        
+      if(data.data.success){
+        
+        let dataObj={};
+        let loggedInUserId = this.props.user._id;
+      
+        dataObj[loggedInUserId]=true;
+        let usersByName=[];
+        for(let user_ of  data.data.usersByName)
+        {
+          if(dataObj[user_._id]!==true ){
+            dataObj[user_._id]=true;
+            usersByName.push(user_);
+          }
+       
+        }
+        let usersByUserName = data.data.usersByUserName;
+        for(let user_ of usersByUserName)
+        {
+          if(dataObj[user_._id]!==true){
+            usersByName.push(user_);
+          }
+        }
+        let searchedUserList = usersByUserName;
+        this.setState({
+          noSeachResults:false,
+          searchedUserList:searchedUserList
+        })
+        
+
+      }else{
+        this.setState({
+          noSeachResults:true,
+          searchedUserList:[]
+        })
+      }
+  
+      }
+     
+    }catch(err){
+      this.setState({
+        noSeachResults:true,
+        searchedUserList:[]
+      })
+      console.error.bind(err);
+    }
+  
+
+    
+
+  }
+
     render(){
 
-      const {userList , avatarList ,success} = this.state;
+      const {userList , avatarList ,success,noSeachResults,searchedUserList} = this.state;
       const { showProfile} = this.props;
         return (
             <div className="suggestions">
               <div className="suggestionsInput">
                 <SearchIcon className="userSearch" />
-                <input placeholder="Search Twitter" type="text" />
+                <DebounceInput
+                  placeholder="Search Twitter" 
+                  type="text" 
+                  minLength={0}
+                  debounceTimeout={700} 
+
+                  onChange = {(e)=>{this.searchUser(e);}}
+                />
               </div>
+
+              {noSeachResults && <div className="searchResult-empty"></div>}
+              
+              {!noSeachResults && (<div className="searchResult">{
+                (searchedUserList.map((user , ind) => (
+                  <UserItem
+                    key={user._id}
+                    id = {user._id}
+                    displayName={user.name_}
+                    username={user.user_name}
+                    verified={true}
+                    showProfile={showProfile}
+                    avatar={avatarList[ind%(avatarList.length)]}
+                  
+                  />
+                )))}</div>) 
+                
+              }
 
               <div className="user-suggestions">
               <div className="user-suggestions-header">
