@@ -6,9 +6,10 @@ import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import RepeatIcon from "@material-ui/icons/Repeat";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import PublishIcon from "@material-ui/icons/Publish";
+import DeleteIcon from "@material-ui/icons/DeleteOutline";
 
 const Tweet = forwardRef(
-  ({ displayName, username, verified, text, image, avatar }, ref) => {
+  ({ displayName, username, verified, text, avatar ,loggedInUserId ,tweetUserId ,deleteTweet,tweetId}, ref) => {
     return (
       <div className="post" ref={ref}>
         <div className="post__avatar">
@@ -34,7 +35,8 @@ const Tweet = forwardRef(
             <ChatBubbleOutlineIcon fontSize="small" />
             <RepeatIcon fontSize="small" />
             <FavoriteBorderIcon fontSize="small" />
-            <PublishIcon fontSize="small" />
+            {true && <PublishIcon fontSize="small"/>}
+            {(loggedInUserId === tweetUserId) && <DeleteIcon fontSize="small"  cursor={"pointer"} onClick ={()=>{deleteTweet(tweetId)}}/>}
           </div>
         </div>
       </div>

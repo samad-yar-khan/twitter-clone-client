@@ -219,6 +219,44 @@ class Profile extends React.Component{
    }
 
 
+   deleteTweet= async(tweetId)=>{
+
+    try{
+      let token = this.props.token;
+        const config = {
+          headers: { Authorization: `Bearer ${token}` }
+      };
+      const bodyParameters = {
+        key: "value"
+     };
+          
+      let data = await API.delete( `tweets/delete/${tweetId}`,
+      config,
+      bodyParameters
+      );
+      // console.log(data.data.tweets);
+     if(data.data.success){
+        let currTweets = this.state.tweetsList;
+      let newTweets = currTweets.filter((tweet)=> tweet._id!==tweetId);
+        
+       this.setState({
+         tweetsList : newTweets,
+        success:true
+       })
+     }else{
+       this.setState({
+         success:false
+       })
+     }
+
+    
+    }catch(err){
+      console.error.bind(err);
+    }
+  
+
+   }
+
    
    unfollowUser= async()=>{
     try{
@@ -266,6 +304,8 @@ class Profile extends React.Component{
 
     const {tweetsList , success, avatarList ,followers,following ,userProfile,follow,ownProfile,loading} = this.state;
     // const token = this.props.token;
+    const {_id} = this.props.user;
+  
     if(loading){
       
       return(<div className="feed"><Loader/></div>);
@@ -370,23 +410,27 @@ class Profile extends React.Component{
         
             {tweetsList.length ===0 && ( <Tweet
                 key={"1"}
+                tweetUserId = {0}
                 displayName={"Mr Error"}
                 username={"ErrorForU"}
                 verified={true}
                 text={"Looks Like You dont have any tweets !"}
                 avatar={"https://i.guim.co.uk/img/media/ef8492feb3715ed4de705727d9f513c168a8b196/37_0_1125_675/master/1125.jpg?width=465&quality=45&auto=format&fit=max&dpr=2&s=7ce91813e22e1ca59b2723833dffa49f"}
-
+                loggedInUserId ={_id}
               /> )}
           {success && ( <FlipMove>
             {tweetsList.map((tweet , ind) => (
               <Tweet
                 key={tweet._id}
-
+                tweetId = {tweet._id}
                 displayName={userProfile.name_}
                 username={userProfile.user_name}
+                tweetUserId = {userProfile._id}
                 verified={false}
                 text={tweet.content}
                 avatar={avatarList[ind%(avatarList.length)]}
+                loggedInUserId ={_id}
+                deleteTweet = {this.deleteTweet}
               
               />
             ))}

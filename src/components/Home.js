@@ -52,7 +52,7 @@ import "../Home.css"
                     showHome ={this.showHome} 
                     user ={user}
                 />
-                  {!showProfile && (<TimeLine token ={token} />)}
+                  {!showProfile && (<TimeLine token ={token} user={user} />)}
                   {showProfile && (<Profile token={token} fetchUserId={fetchUserId} user={user}/>)}
                     
                     <Suggestions token={token} user={user} showProfile={this.showProfile}/>

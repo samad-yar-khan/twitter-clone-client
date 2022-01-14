@@ -4,8 +4,42 @@
 
   .user-suggestions {
     flex: 0.5;
-    margin-top: 100px;
+    margin-top: 15vh;
+    height: 75vh;
+    
+  min-width: fit-content;
+ 
+  
   }
+  .user-suggestions::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .user-suggestions-d {
+    height: 73vh;
+    
+  min-width: fit-content;
+  overflow-y: scroll;
+  
+  }
+
+  .user-suggestions-d::-webkit-scrollbar {
+    width: 5px;
+}
+
+.user-suggestions-d::-webkit-scrollbar-track {
+    background-color: darkgrey;
+}
+  .user-suggestions-d::-webkit-scrollbar-thumb {
+    
+      border-radius: 100px;
+      background: #76beee;
+      border: 6px solid rgba(0,0,0,0.2);
+
+  }
+  
+  
+   
   
   .suggestionsInput {
     display: flex;
@@ -23,6 +57,7 @@
   }
 
   .user-suggestions-header   h2{
+
     margin-left: 15px;
     font-size: 20px;
     font-weight: 800;

@@ -88,6 +88,7 @@ class Suggestions extends React.Component{
                   Suggestions
                 </h2>
               </div>
+              <div className="user-suggestions-d">
               {success && (userList.map((user , ind) => (
               <UserItem
                 key={user._id}
@@ -100,6 +101,8 @@ class Suggestions extends React.Component{
               
               />
             )))}
+              </div>
+              
 
               </div>
              

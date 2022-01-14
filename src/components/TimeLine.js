@@ -86,6 +86,7 @@ class TimeLine extends React.Component{
 
     const {tweetsList , success, avatarList,loading} = this.state;
     const token = this.props.token;
+    const {_id} = this.props.user;
 
     if(loading){
       
@@ -116,12 +117,14 @@ class TimeLine extends React.Component{
             {tweetsList.map((tweet , ind) => (
               <Tweet
                 key={tweet._id}
-
+                tweetId = {tweet._id}
                 displayName={tweet.user.name_}
                 username={tweet.user.user_name}
+                tweetUserId = {tweet.user._id}
                 verified={true}
                 text={tweet.content}
                 avatar={avatarList[ind%(avatarList.length)]}
+                loggedInUserId ={_id}
               
               />
             ))}
