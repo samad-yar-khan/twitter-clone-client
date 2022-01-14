@@ -80,6 +80,45 @@ class TimeLine extends React.Component{
 
     }
 
+    deleteTweet= async(tweetId)=>{
+
+      try{
+        let token = this.props.token;
+          const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        const bodyParameters = {
+          key: "value"
+       };
+            
+        let data = await API.delete( `tweets/delete/${tweetId}`,
+        config,
+        bodyParameters
+        );
+        // console.log(data.data.tweets);
+       if(data.data.success){
+          let currTweets = this.state.tweetsList;
+        let newTweets = currTweets.filter((tweet)=> tweet._id!==tweetId);
+          
+         this.setState({
+           tweetsList : newTweets,
+          success:true
+         })
+       }else{
+         this.setState({
+           success:false
+         })
+       }
+  
+      
+      }catch(err){
+        console.error.bind(err);
+      }
+    
+  
+     }
+  
+     
 
   
   render(){
@@ -125,6 +164,7 @@ class TimeLine extends React.Component{
                 text={tweet.content}
                 avatar={avatarList[ind%(avatarList.length)]}
                 loggedInUserId ={_id}
+                deleteTweet = {this.deleteTweet}
               
               />
             ))}

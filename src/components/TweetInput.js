@@ -56,7 +56,6 @@ class TweetInput extends React.Component{
           config
           );
 
-          console.log(data.data.data);
           // console.log(data.data.tweets);
          if(data.data.success){
 
