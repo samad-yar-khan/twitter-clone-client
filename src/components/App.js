@@ -65,6 +65,11 @@ class App extends React.Component {
       if(token){
   
         const user = jwt_decode(token);
+        const  fullToken = jwt_decode(token , {complete: true})
+        let dateNow = new Date();
+
+     
+  
         // console.log(user);
     //     const config = {
     //       headers: { Authorization: `Bearer ${token}` }
@@ -79,7 +84,7 @@ class App extends React.Component {
       // );
       // console.log(userData);
 
-      if(user){
+      if(fullToken.exp*1000 > dateNow.getTime()){
         this.setState({
           token:token,
           user : user,
