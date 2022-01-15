@@ -198,10 +198,12 @@ class Profile extends React.Component{
         // console.log(data.data.tweets);
        if(data.data.success){
             
-            let {myFollowing} = this.state;
+            let {myFollowing, followers} = this.state;
         myFollowing[fetchUserId]=true;
+        followers.push(this.props.user);
          this.setState({
              myFollowing:myFollowing,
+             followers :followers,
           follow:true,
           success:true
          })
@@ -280,11 +282,20 @@ class Profile extends React.Component{
         // console.log(data.data.tweets);
        if(data.data.success){
 
-            let {myFollowing} = this.state;
+            let {myFollowing , followers} = this.state;
             myFollowing[fetchUserId]=false;
+
+            let newFollowers = [];
+
+            for(let users of followers){
+              if(users._id !== this.props.user._id){
+                newFollowers.push(users);
+              }
+            }
 
          this.setState({
             myFollowing:myFollowing,
+            followers : newFollowers,
           follow:false,
           success:true
          })
