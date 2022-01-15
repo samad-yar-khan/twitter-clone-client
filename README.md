@@ -4,7 +4,7 @@
 
 <blockquote align="center">
   <b><i>
-    This is the fronr-end of a micro-blogging platform like twitter build using ReactJS.
+    This is the front-end of a micro-blogging platform like twitter build using ReactJS.
   </i></b>
 </blockquote>
 
