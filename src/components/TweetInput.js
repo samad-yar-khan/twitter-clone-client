@@ -59,9 +59,12 @@ class TweetInput extends React.Component{
           // console.log(data.data.tweets);
          if(data.data.success){
 
-          this.props.updateTweets(data.data.data.tweet);
+          this.setState({
+            tweetText : ""
+          }, ()=>{
+            this.props.updateTweets(data.data.data.tweet);
 
-          
+          })  ;
          }
         }catch(err){
           console.error.bind(err);
@@ -83,6 +86,7 @@ class TweetInput extends React.Component{
                     onChange={(e) => this.setTweetMessage(e)}
                     placeholder="What's happening?"
                     type="text"
+                    value ={this.state.tweetText}
                   />
                 </div>
               {
