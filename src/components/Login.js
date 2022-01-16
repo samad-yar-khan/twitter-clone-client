@@ -53,6 +53,8 @@ class Login extends React.Component {
 
 
      render() {
+
+        let  {signedUpSuccessFully} = this.props;
     
          return (
                       <div className='d-flex align-items-center justify-content-around align-items-center'>
@@ -62,17 +64,20 @@ class Login extends React.Component {
                 {/* <h1 className='mb-5 d-flex justify-content-around'>
                     SignUp
                 </h1> */}
+          {signedUpSuccessFully && (<Form.Text className="text-success">
+            Signed Up succesfully , Login to continue ! 
+          </Form.Text>)}
         <Form.Group className="mb-3 mt-3 "  controlId="formBasicEmail">
           <Form.Control type="email" placeholder="Enter email" onChange={(e)=>{this.handleEmailChange(e)}}/>
-          <Form.Text className="text-muted">
+          {!signedUpSuccessFully &&(<Form.Text className="text-muted">
             We are excited to have you back here!
-          </Form.Text>
+          </Form.Text>)}
         </Form.Group>
         
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Control type="password" placeholder="Password" onChange={(e)=>{this.handlePasswordChange(e)}}/>
-          {this.props.loginFail && (<Form.Text className="text-muted">
-            We are excited to have you back here!
+          {this.props.loginFail && (<Form.Text className="text-danger">
+                Incorrect Email or Password !
           </Form.Text>)}
         </Form.Group>
         

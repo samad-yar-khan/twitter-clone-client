@@ -140,7 +140,12 @@ class App extends React.Component {
            
         }
     }catch(err){
-        console.log(err);
+      this.setState({
+        loginFail:true,
+        isLoggedIn : false
+      },()=>{
+        console.error.bind(err);
+      });
     }
     
 

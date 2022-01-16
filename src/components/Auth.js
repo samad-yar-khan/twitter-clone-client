@@ -22,7 +22,8 @@ import {Login , SignUp} from './index'
             signUp:false,
             successSignUp :false,
             failedSignUp :false,
-            message :""
+            message :"",
+            signedUpSuccessFully:false
         }
 
     }
@@ -73,8 +74,9 @@ import {Login , SignUp} from './index'
                 this.setState({
                     successSignUp:true,
                     failedSignUp:false,
-                    SignUp:false,
-                    message:data.data.message
+                    signUp:false,
+                    message:data.data.message,
+                    signedUpSuccessFully:true
                 })
             }else{
                 this.setState({
@@ -93,7 +95,7 @@ import {Login , SignUp} from './index'
     
 
      render() {
-        const {signUp ,successSignUp,failedSignUp,message} = this.state;
+        const {signUp ,successSignUp,failedSignUp,message,signedUpSuccessFully} = this.state;
     
       
        
@@ -118,6 +120,7 @@ import {Login , SignUp} from './index'
                     <Login
                         logIn = {this.props.logIn}
                         loginFail = {this.props.loginFail}
+                        signedUpSuccessFully={signedUpSuccessFully}
                     />}
                     
                     </div>

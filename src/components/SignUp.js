@@ -91,7 +91,7 @@ import Button from 'react-bootstrap/Button'
           {this.props.successSignUp && (<Form.Text className="text-muted">
                 Signed Up ! for twitter
           </Form.Text>)}
-          {this.props.failedSignUp && (<Form.Text variant="danger" className="text-muted">
+          {this.props.failedSignUp && (<Form.Text variant="danger" className="text-danger">
                 Signup Failed {this.props.message}
           </Form.Text>)}
         </Form.Group>
